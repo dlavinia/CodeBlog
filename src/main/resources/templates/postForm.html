@@ -1,0 +1,63 @@
+<html lang="br"  xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBlog | Novo Post</title>
+
+    <!--BootstrapCND-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+     <!--SummerNote-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar  bg-dark">
+            <a class="navbar-brand" href="#" style="color: white; font-weight: bold;">CodeBlog</a>
+        </nav>
+    
+    </header>
+
+    <section>
+        <div class="container" style="width: 60%;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                    <li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Novo Post</li>
+                </ol>
+            </nav>
+
+            <div>
+                <th:block th:include="mensagemValidacao"></th:block>
+                <form method="POST">
+                   <div class="from-group">
+                       <input type="text" class="form-control" name="titulo" placeholder="Título *" style="margin: 10px;">
+                   </div>
+                   <div class="from-group">
+                    <input type="text" class="form-control" name="autor" placeholder="Autor *" style="margin: 10px;">
+                    </div>
+                    <div class="from-group">
+                    <textarea type="text" class="form-control" id="summernote" name="texto" placeholder="Texto... *" style="margin: 10px;"></textarea>
+                    </div>
+                    <small class="form-text text-muted">(*) Campos obrigatorios</small>
+
+                    <button type="submit" class="btn btn-dark" style="margin: 10px;">Publicar</button>
+                    <a href="/posts" class="btn btn-light" style="margin: 10px;">Cancelar</a>
+
+                </form>
+            </div>
+            
+        </div>
+    </section>
+    <script> 
+    $('#summernote').summernote({ placeholder: 'Texto *', tabsize: 2, height: 300 }); </script>
+
+</body>
+</html>

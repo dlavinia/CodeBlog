@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="br"  xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBlog | Posts</title>
+
+    <!--BootstrapCND-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar  bg-dark">
+            <a class="navbar-brand" href="#" style="color: white; font-weight: bold;">CodeBlog</a>
+            <a href="/newpost" class="btn btn-light" role="button">Novo Post</a>
+        </nav>
+    
+    </header>
+
+    <section>
+        <div class="container" style="width: 60%;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                    <li class="breadcrumb-item active" aria-current="page">Posts</li>
+                </ol>
+            </nav>
+            <div class="card" style="margin-bottom: 40px;" th:each = "post : ${posts} ">
+                <div class="card-body">
+                 <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+                    <span th:text ="${post.autor}"></span>
+                    <span th:text ="${post.data}"></span>
+                 </p>
+
+                 <a th:href="${(#mvc.url('CC#getPostDetalhes').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text ="${post.titulo}"></span></h4></a>
+
+                 <p class="card-text">
+                    <span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
+                 </p>
+                </div>
+              </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
